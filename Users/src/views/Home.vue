@@ -1,14 +1,14 @@
 <template>
     <br><div class="row">
-        <VoteCard v-for="element in elements" :key="element.id" :element="element"></VoteCard>
+        <VoteCard v-model:elements="elements"></VoteCard>
     </div>
 </template>
     
 <script setup>
     import VoteCard from '@/components/VoteCard.vue';
-import axiosapi from '@/plugins/axios';
-import Swal from 'sweetalert2';
-import { onMounted } from 'vue';
+    import axiosapi from '@/plugins/axios';
+    import Swal from 'sweetalert2';
+    import { onMounted } from 'vue';
     import { ref } from 'vue';
 
     //Card

@@ -23,14 +23,4 @@ public class VoteElement {
 
     @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private String description;
-
-    @Column(name = "option_one")
-    private String optionOne;
-
-    @Column(name = "option_two")
-    private String optionTwo;
-
 }

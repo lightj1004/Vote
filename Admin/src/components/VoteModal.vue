@@ -14,18 +14,6 @@
                             <td>項目名稱 : </td>
                             <td><input type="text" name="name" :value="element.name" @input="doinput('name', $event)"></td>
                         </tr>
-                        <tr>
-                            <td>項目描述 : </td>
-                            <td><input type="text" name="description" :value="element.description" @input="doinput('description', $event)"></td>
-                        </tr>
-                        <tr>
-                            <td>選項一 : </td>
-                            <td><input type="text" name="optionOne" :value="element.optionOne" @input="doinput('optionOne', $event)"></td>
-                        </tr>
-                        <tr>
-                            <td>選項二 : </td>
-                            <td><input type="text" name="optionTwo" :value="element.optionTwo" @input="doinput('optionTwo', $event)"></td>
-                        </tr>
                     </table>
                 </div>
                 <div class="modal-footer">

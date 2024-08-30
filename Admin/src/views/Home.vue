@@ -5,8 +5,8 @@
             
         </div>
     </div><br>
-    <div class="row">
-        <VoteCard v-for="element in elements" :key="element.id" :element="element" @show-update="showUpdate"></VoteCard>
+    <div class="row justify-content-center">
+        <VoteCard v-model:elements="elements" @show-update="showUpdate"></VoteCard>
     </div>
     <VoteModal ref="voteModal" v-model:element="element" :is-insert="isInsert" @do-insert="callCreate" @do-update="callModify"></VoteModal>
 </template>

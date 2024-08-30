@@ -25,8 +25,6 @@ public class VoteRecord {
     private String username;
 
     @Column(nullable = false)
-    private String element;
+    private int element;
 
-    @Column(nullable = false)
-    private String choose;
 }
