@@ -97,6 +97,12 @@
 
     //進行註冊
     function doregister(){
+        Swal.fire({
+            text: "處理中...",
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            showConfirmButton: false
+        })
         if(checkPasswordResult == true){
             let request = {
                 "username": username.value,
@@ -104,7 +110,29 @@
                 "password": password.value,
             }
 
-            console.log(request);
+            axiosapi.post("/users/",request).then(function(response){
+                if (response.data.success) {
+					Toast.fire({
+						icon: "success",
+						title: response.data.message,
+					})
+                }else{
+                    Swal.fire({
+                        icon:'error',
+                        text: response.data.message
+                    })
+                }
+            }).catch(function(error){
+                Swal.fire({
+                    icon: 'warning',
+                    text: "請檢查連線"
+                })
+            })
+        }else{
+            Swal.fire({
+                icon: 'warning',
+                text: "密碼與確認密碼不相同"
+            })
         }
         
     }

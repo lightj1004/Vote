@@ -13,10 +13,10 @@
     
 <script setup>
     import VoteCard from '@/components/VoteCard.vue';
-import VoteModal from '@/components/VoteModal.vue';
-import axiosapi from '@/plugins/axios';
-import Swal from 'sweetalert2';
-import { onMounted } from 'vue';
+    import VoteModal from '@/components/VoteModal.vue';
+    import axiosapi from '@/plugins/axios';
+    import Swal from 'sweetalert2';
+    import { onMounted } from 'vue';
     import { ref } from 'vue';
 
     // Modal
@@ -69,7 +69,7 @@ import { onMounted } from 'vue';
             allowOutsideClick: false,
             showConfirmButton: false
         })
-        axiosapi.get("/api/element/").then(function(response){
+        axiosapi.get("/element/").then(function(response){
             Swal.close();
             if(response.data.success){
                 elements.value = response.data.elements;
@@ -96,7 +96,7 @@ import { onMounted } from 'vue';
             showConfirmButton: false
         })
 
-        axiosapi.post("/api/element/",newElement).then(function(response){
+        axiosapi.post("/element/",newElement).then(function(response){
             if(response.data.success){
                 voteModal.value.hideModal();
                 Toast.fire({
@@ -131,7 +131,7 @@ import { onMounted } from 'vue';
                 showConfirmButton: false
             })
 
-            axiosapi.put(`/api/element/${newElement.id}`,newElement).then(function(response){
+            axiosapi.put(`/element/${newElement.id}`,newElement).then(function(response){
                 if(response.data.success){
                     voteModal.value.hideModal();
                     Toast.fire({

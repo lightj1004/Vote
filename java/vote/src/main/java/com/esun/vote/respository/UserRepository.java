@@ -1,5 +1,6 @@
 package com.esun.vote.respository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,5 +10,5 @@ import com.esun.vote.model.Users;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, UUID> {
-
+    public Optional<Users> findByUsername(String username);
 }

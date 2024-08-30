@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/element")
+@RequestMapping("/element")
 public class VoteElementController {
     @Autowired
     private VoteElementService elementService;

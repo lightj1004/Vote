@@ -42,7 +42,11 @@
 </template>
     
 <script setup>
-    let user = sessionStorage.getItem("username");
+  let user = sessionStorage.getItem("user");
+  function logout(){
+    sessionStorage.clear();
+    location.reload();
+  }
 </script>
     
 <style>

@@ -40,14 +40,14 @@
             allowOutsideClick: false,
             showConfirmButton: false
         })
-        axiosapi.get("/api/element/").then(function(response){
+        axiosapi.get("/element/").then(function(response){
             Swal.close();
             if(response.data.success){
                 elements.value = response.data.elements;
             }else{
                 Toast.fire({
                     icon:'info',
-                    text: "請先新增一項投票項目"
+                    text: "暫無投票項目"
                 })
             }
         }).catch(function(error){
