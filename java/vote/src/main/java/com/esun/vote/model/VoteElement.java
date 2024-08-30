@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "vote_element")
-public class Element {
+public class VoteElement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +23,14 @@ public class Element {
 
     @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
+    private String description;
+
+    @Column(name = "option_one")
+    private String optionOne;
+
+    @Column(name = "option_two")
+    private String optionTwo;
 
 }

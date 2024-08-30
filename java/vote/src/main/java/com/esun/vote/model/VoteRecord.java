@@ -15,15 +15,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "vote_record")
-public class Record {
+public class VoteRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false)
-    private String users;
+    private String username;
 
     @Column(nullable = false)
     private String element;
+
+    @Column(nullable = false)
+    private String choose;
 }
