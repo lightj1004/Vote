@@ -13,4 +13,6 @@ public interface VoteRecordRepository extends JpaRepository<VoteRecord, Integer>
 
     @Query(value = "select e.id, e.name, coalesce(r.cnt,0) as cnt from vote_element e left  join (select element ,count(*) as cnt from vote_record group by element) as r on e.id = r.element", nativeQuery = true)
     public List<Object[]> recordCounts();
+
+    public List<VoteRecord> findByUsername(String username);
 }

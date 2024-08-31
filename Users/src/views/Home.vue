@@ -1,6 +1,6 @@
 <template>
     <br><div class="row">
-        <VoteCard v-model:elements="elements" v-model:counts="counts"></VoteCard>
+        <VoteCard v-model:elements="elements" v-model:counts="counts" v-model:voted="voted"></VoteCard>
     </div>
 </template>
     
@@ -8,12 +8,18 @@
     import VoteCard from '@/components/VoteCard.vue';
     import axiosapi from '@/plugins/axios';
     import Swal from 'sweetalert2';
+    import { onBeforeMount } from 'vue';
     import { onMounted } from 'vue';
     import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
     //Card
     const elements = ref();
     const counts = ref();
+    const voted = ref(false);
+
+    //Router
+    const router = useRouter();
 
     //Sweetalert2
     const Toast = Swal.mixin({
@@ -27,6 +33,12 @@
                 toast.onmouseleave = Swal.resumeTimer;
             }
             });
+
+    onBeforeMount(function(){
+        if(!sessionStorage.getItem("user")){
+            router.push("/login");
+        }
+    })
 
     
     onMounted(function(){
@@ -51,6 +63,24 @@
                         counts.value = response.data.counts;
                     }
                     
+                }).catch(function(error){
+                    Swal.fire({
+                        icon:'warning',
+                        text:"票數查詢失敗"
+                    })
+                })
+
+                axiosapi.get(`/record/check/${sessionStorage.getItem("user")}`).then(function(response){
+                    if(response.data.success){
+                        voted.value = true;
+                    }else{
+                        voted.value = false;
+                    }
+                }).catch(function(error){
+                    Swal.fire({
+                        icon:'warning',
+                        text:"投票紀錄異常"
+                    })
                 })
             }else{
                 Toast.fire({
