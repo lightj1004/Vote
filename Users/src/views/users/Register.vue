@@ -47,7 +47,9 @@
     import axiosapi from '@/plugins/axios';
     import Swal from 'sweetalert2';
     import { ref,onBeforeMount } from 'vue';
+import { useRouter } from 'vue-router';
     
+    const router = useRouter();
     const username = ref();
     const name = ref();
     const password = ref();
@@ -115,7 +117,9 @@
 					Toast.fire({
 						icon: "success",
 						title: response.data.message,
-					})
+					}).then(function(){
+                        router.push("/login");
+                    })
                 }else{
                     Swal.fire({
                         icon:'error',
