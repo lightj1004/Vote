@@ -17,7 +17,7 @@
                             <tr v-for="element in elements" :key="element.id">
                             <th scope="row">{{ element.id }}</th>
                             <td>{{ element.name }}</td>
-                            <td></td>
+                            <td>{{ getCounts(element.id) }}</td>
                             <td></td>
                             </tr>
                         </tbody>
@@ -28,9 +28,12 @@
 </template>
     
 <script setup>
-
-const props = defineProps(["elements"]);
+const props = defineProps(["elements","counts"]);
 const emits = defineEmits(["showUpdate"]);
+
+const getCounts = function(id){
+    return props.counts[id-1].cnt;
+}
     
 </script>
     

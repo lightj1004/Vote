@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.esun.vote.model.VoteElement;
 import com.esun.vote.service.VoteElementService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @CrossOrigin
 @RestController
@@ -35,6 +35,13 @@ public class VoteElementController {
             responseBody.put("success", false);
             responseBody.put("message", "查無資料");
         }
+        return responseBody.toString();
+    }
+
+    @GetMapping("/user")
+    public String getElementAndRecordCount() {
+        JSONObject responseBody = new JSONObject();
+
         return responseBody.toString();
     }
 

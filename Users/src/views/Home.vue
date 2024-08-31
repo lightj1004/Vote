@@ -1,6 +1,6 @@
 <template>
     <br><div class="row">
-        <VoteCard v-model:elements="elements"></VoteCard>
+        <VoteCard v-model:elements="elements" v-model:counts="counts"></VoteCard>
     </div>
 </template>
     
@@ -13,6 +13,7 @@
 
     //Card
     const elements = ref();
+    const counts = ref();
 
     //Sweetalert2
     const Toast = Swal.mixin({
@@ -41,9 +42,16 @@
             showConfirmButton: false
         })
         axiosapi.get("/element/").then(function(response){
-            Swal.close();
+            
             if(response.data.success){
                 elements.value = response.data.elements;
+                axiosapi.get("/record/").then(function(response){
+                    if(response.data.success){
+                        Swal.close();
+                        counts.value = response.data.counts;
+                    }
+                    
+                })
             }else{
                 Toast.fire({
                     icon:'info',
